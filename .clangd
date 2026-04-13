@@ -1,0 +1,22 @@
+CompileFlags:
+  Add:
+    - "-xc"
+    - "-std=c23"
+    - "-Wno-ignored-command-line-option"
+  Compiler: gcc
+
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+
+Diagnostics:
+  StrictHeaderChecks: false
+  HeaderIncludeStyle: NoDiagnostics
+  IgnoredHeaders:
+    - "**/c++/**"
+    - "**/mingw64/**"
+  Suppress: attributes_not_allowed
+
+Log:
+  Verbosity: 2
