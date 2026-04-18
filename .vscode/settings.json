@@ -101,14 +101,20 @@
   "cSpell.words": [
     "codeforces",
     "cyaron",
+    "figsize",
     "freopen",
     "ICPC",
     "lcnt",
+    "linestyle",
     "LSGT",
     "luogu",
     "SPFA",
     "Warshall",
-    "XCPC"
+    "XCPC",
+    "xlabel",
+    "xscale",
+    "ylabel",
+    "yscale"
   ],
 
   "cmake.ignoreCMakeListsMissing": true,

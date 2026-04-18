@@ -217,8 +217,8 @@ static inline long long nano_time() {
     return (long long)(now.QuadPart * 1000000000LL / freq.QuadPart);
 }
 
-void bench_test_combine(long min_size, long max_size) {
-    FILE* fp = fopen("combine_bench.csv", "w");
+void bench_test_combine(const char* path, long min_size, long max_size) {
+    FILE* fp = fopen(path, "w");
     if (!fp) {
         perror("fopen");
         return;
@@ -282,11 +282,11 @@ void bench_test_combine(long min_size, long max_size) {
     }
 
     fclose(fp);
-    printf("Benchmark finished -> combine_bench.csv\n");
+    printf("Benchmark finished -> %s\n", path);
 }
 
 int main() {
     test_combine();
-    bench_test_combine(1000, 100000000);
+    bench_test_combine("results/combine_bench.csv", 1000, 10000000);
     return 0;
 }
