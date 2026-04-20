@@ -5,3 +5,5 @@
 .vscode 中配置了 clangd 和 code runner。项目保证每个实验均为单文件。使用 code runner 生成的可执行文件位于 build 目录下
 
 项目在 windows 上构建，后续会将代码移植到 linux 中
+
+后续将合并 https://github.com/iAeternus/repetition.git 项目中的内容并删除 repetition 项目
