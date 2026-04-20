@@ -14,4 +14,5 @@ plt.title("Matrix Multiplication Loop Order Performance")
 plt.legend()
 plt.grid()
 
+plt.savefig("results/mat_mult.png", dpi=300)
 plt.show()
