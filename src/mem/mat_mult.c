@@ -3,7 +3,7 @@
 #include <windows.h>
 
 #define MINN 16
-#define MAXN 256
+#define MAXN 700
 #define INCN 16
 #define WARMUP 2
 #define REPEAT 5
