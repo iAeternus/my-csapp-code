@@ -112,6 +112,8 @@
     "MAXN",
     "MAXSTRIDE",
     "mult",
+    "multcnt",
+    "multvec",
     "SPFA",
     "Warshall",
     "XCPC",
