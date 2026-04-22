@@ -42,3 +42,5 @@ vcpkg/*
 
 /src/test/*
 /src/job/*
+
+.venv

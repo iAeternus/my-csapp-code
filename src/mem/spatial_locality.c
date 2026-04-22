@@ -1,5 +1,6 @@
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
-#include <windows.h>
+#include <time.h>
 
 #define N 2000000
 #define REPEAT 50
@@ -49,18 +50,10 @@ void clear3(Point* p, int n) {
 }
 
 static inline long long nano_time() {
-    static LARGE_INTEGER freq;
-    static int initialized = 0;
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
 
-    if (!initialized) {
-        QueryPerformanceFrequency(&freq);
-        initialized = 1;
-    }
-
-    LARGE_INTEGER now;
-    QueryPerformanceCounter(&now);
-
-    return (long long)(now.QuadPart * 1000000000LL / freq.QuadPart);
+    return (long long)ts.tv_sec * 1000000000LL + ts.tv_nsec;
 }
 
 void bench_test_clear(const char* path, long min_size, long max_size) {

@@ -1,3 +1,6 @@
+#!/bin/bash
+mkdir -p static_lib
+
 gcc -c addvec.c -o static_lib/addvec.o
 gcc -c multvec.c -o static_lib/multvec.o
 

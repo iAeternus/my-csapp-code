@@ -1,6 +1,8 @@
+#define _POSIX_C_SOURCE 200809L
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
+#include <time.h>
 
 #define MINN 16
 #define MAXN 700
@@ -131,18 +133,10 @@ void ikj(Matrix a, Matrix b, Matrix c, int n) {
 }
 
 static inline long long nano_time() {
-    static LARGE_INTEGER freq;
-    static int initialized = 0;
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
 
-    if (!initialized) {
-        QueryPerformanceFrequency(&freq);
-        initialized = 1;
-    }
-
-    LARGE_INTEGER now;
-    QueryPerformanceCounter(&now);
-
-    return (long long)(now.QuadPart * 1000000000LL / freq.QuadPart);
+    return (long long)ts.tv_sec * 1000000000LL + ts.tv_nsec;
 }
 
 double run(void (*f)(Matrix, Matrix, Matrix, int), int n) {
@@ -176,7 +170,7 @@ int main() {
 
     init(ga, gb, MAXN);
 
-    FILE* fp = fopen("results/mat_mult.csv", "w");
+    FILE* fp = fopen("results/mat_mult2.csv", "w");
     if (!fp) {
         perror("fopen");
         return 1;
@@ -198,7 +192,7 @@ int main() {
 
     fclose(fp);
 
-    printf("Results written to results/mat_mult.csv\n");
+    printf("Results written to results/mat_mult2.csv\n");
 
     return 0;
 }

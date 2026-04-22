@@ -8,6 +8,7 @@ int main() {
     for (size_t i = n - 1; i < n; i--) {
         printf("%d ", arr[i]);
     }
+    putchar('\n');
 
     return 0;
 }

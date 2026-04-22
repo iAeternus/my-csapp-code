@@ -1,6 +1,8 @@
+#define _POSIX_C_SOURCE 200809L
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
+#include <time.h>
 
 #define MINBYTES (1 << 14) // 16KB
 #define MAXBYTES (1 << 26) // 128MB
@@ -14,18 +16,14 @@
 long data[MAXELEMS];
 
 static inline long long nano_time() {
-    static LARGE_INTEGER freq;
-    static int initialized = 0;
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
 
-    if (!initialized) {
-        QueryPerformanceFrequency(&freq);
-        initialized = 1;
-    }
+    return (long long)ts.tv_sec * 1000000000LL + ts.tv_nsec;
+}
 
-    LARGE_INTEGER now;
-    QueryPerformanceCounter(&now);
-
-    return (long long)(now.QuadPart * 1000000000LL / freq.QuadPart);
+static inline int min(int a, int b) {
+    return a < b ? a : b;
 }
 
 void init_data(long* data, int n) {
