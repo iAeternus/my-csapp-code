@@ -3,7 +3,7 @@
   "tasks": [
     {
       "type": "shell",
-      "label": "Build C++ (with debug)",
+      "label": "Build C++ (debug)",
       "command": "g++",
       "args": [
         "-g",
@@ -13,7 +13,7 @@
         "-O0",
         "${file}",
         "-o",
-        "${workspaceFolder}/build/${fileBasenameNoExtension}.exe"
+        "${workspaceFolder}/build/${fileBasenameNoExtension}"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
@@ -22,7 +22,7 @@
         "kind": "build",
         "isDefault": true
       },
-      "detail": "编译为调试版本（包含调试信息）",
+      "detail": "Compile with debug symbols",
       "problemMatcher": ["$gcc"]
     },
     {
@@ -36,13 +36,13 @@
         "-O2",
         "${file}",
         "-o",
-        "${workspaceFolder}/build/${fileBasenameNoExtension}.exe"
+        "${workspaceFolder}/build/${fileBasenameNoExtension}"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "group": "build",
-      "detail": "编译为发布版本（优化）",
+      "detail": "Compile with optimization",
       "problemMatcher": ["$gcc"]
     },
     {
@@ -51,13 +51,13 @@
       "command": "rm",
       "args": [
         "-rf",
-        "${workspaceFolder}/build/*"
+        "${workspaceFolder}/build"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "group": "none",
-      "detail": "清理 build 目录"
+      "detail": "Clean build directory"
     }
   ]
 }
