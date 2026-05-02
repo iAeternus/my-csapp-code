@@ -1,4 +1,4 @@
-/* 
+/*
  * csapp.c - Functions for the CS:APP3e book
  *
  * Updated 10/2016 reb:
@@ -7,7 +7,7 @@
  * Updated 2/2016 droh:
  *   - Updated open_clientfd and open_listenfd to fail more gracefully
  *
- * Updated 8/2014 droh: 
+ * Updated 8/2014 droh:
  *   - New versions of open_clientfd and open_listenfd are reentrant and
  *     protocol independent.
  *
@@ -16,11 +16,12 @@
  *
  * Updated 7/2014 droh:
  *   - Aded reentrant sio (signal-safe I/O) routines
- * 
- * Updated 4/2013 droh: 
+ *
+ * Updated 4/2013 droh:
  *   - rio_readlineb: fixed edge case bug
  *   - rio_readnb: removed redundant EINTR check
  */
+#define _POSIX_C_SOURCE 200809L
 /* $begin csapp.c */
 #include "csapp.h"
 
